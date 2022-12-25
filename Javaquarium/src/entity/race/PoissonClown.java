@@ -1,12 +1,20 @@
 package entity.race;
 
-import entity.Fish;
-import entity.Gender;
-import entity.Regime;
+import entity.*;
+
+import java.io.IOException;
 
 public class PoissonClown extends Fish {
     public PoissonClown(String name, Gender gender, int age) {
         super(name, gender, age);
-        Regime regime = Regime.CARNIVORE;
+        setRegime(Regime.CARNIVORE);
+        setRace(Race.POISSONCLOWN);
+        setSexuality(Sexuality.OPPORTUNISTE);
     }
+
+    @Override
+    public Living reproduce() throws IOException {
+        return new PoissonClown(randomName(), aleatoryGender(), 0);
+    }
+
 }

@@ -1,18 +1,22 @@
 package entity;
 
-public class Agua implements Edible {
-    private int age;
+public class Agua extends Living {
 
-    public Agua(int age) {
-        this.age = age;
+    public Agua(int age, double lifePoint) {
+        setAge(age);
+        setEnergyValue(3);
+        setLifeResistance(2);
+        setLifePoint(lifePoint);
     }
 
-    public int getAge() {
-        return age;
+    public boolean canReproduce(){
+        return this.getLifePoint() > 10;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    @Override
+    public Living reproduce() {
+        this.setLifePoint(getLifePoint()/2);
+        return new Agua(0, this.getLifePoint());
     }
 
 }
